@@ -1,0 +1,18 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+public class RegisterService {
+
+	
+	public void RegisterEmployee (Employee employee ) throws IOException {
+		
+		EmployeeDao employeeDao = new EmployeeDao();
+		
+		employeeDao.RegisterEmployee(employee);		
+		
+
+	}
+	
+}

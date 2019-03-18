@@ -1,0 +1,7 @@
+package org.revature.ERS.org.revature.ERS;
+
+import javax.servlet.http.HttpServlet;
+
+public class ManagerReimbursementServlet extends HttpServlet {
+
+}

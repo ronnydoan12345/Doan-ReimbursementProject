@@ -1,0 +1,128 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReimbursementDao {
+
+public List<Reimbursement> getAllReimbursements () throws IOException {
+		
+		PreparedStatement ps = null;
+		Reimbursement reimb = null;
+		List<Reimbursement> reimbList = new ArrayList<Reimbursement>();
+
+		try {
+			DBUtilities dbUtilities = new DBUtilities();
+
+			String sqlStatement = "SELECT * FROM Reimbursements";
+			ps = dbUtilities.connection.prepareStatement(sqlStatement);
+			ResultSet resultSet = ps.executeQuery();
+
+			while (resultSet.next()) {
+				// fixthis
+				reimb = new Reimbursement();
+				reimb.setEmployeeid(resultSet.getInt("employeeid"));
+				reimb.setEmployeename(resultSet.getString("employeename"));
+				reimb.setEmail(resultSet.getString("email"));
+				reimb.setPassword(resultSet.getString("password"));
+				
+				reimb.setReceiptimage(resultSet.getString("receiptimage"));
+				reimb.setReceiptstatus(resultSet.getString("receiptstatus"));
+				reimb.setManagerid(resultSet.getInt("managerid"));
+				reimb.setReceiptimage(resultSet.getString("manageremail"));
+				reimb.setReceiptimage(resultSet.getString("managerpassword"));
+				
+				reimbList.add(reimb);
+
+			}
+			dbUtilities.DisconnectFromDB();
+
+		} catch (SQLException ex) {
+			System.out.println("The following error has occured" + ex.getMessage());
+		}
+		return reimbList;
+		
+		
+	}
+
+public void submitReimbursement(Reimbursement reimbursement) throws IOException {
+	
+	PreparedStatement ps = null;
+	System.out.println("reimbdao");
+	System.out.println(reimbursement);
+	try {
+		DBUtilities dbUtilities = new DBUtilities();
+
+		String sqlStatement = "INSERT INTO Reimbursements (status,image, amount, employeeid, employeename, email, password,managerid,managername,manageremail,managerpassword) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		ps = dbUtilities.connection.prepareStatement(sqlStatement);
+		
+		ps.setString(1, reimbursement.getStatus());
+		ps.setString(2, reimbursement.getImage());
+		ps.setInt(3, reimbursement.getAmount());
+		ps.setInt(4, reimbursement.getEmployeeid());
+		ps.setString(5, reimbursement.getEmployeename());
+		ps.setString(6, reimbursement.getEmail());
+		ps.setString(7, reimbursement.getPassword());
+		ps.setInt(8, reimbursement.getManagerid());
+		ps.setString(9, reimbursement.getManageremail());
+		ps.setString(10, reimbursement.getManagerpassword());
+		ps.executeQuery();
+		dbUtilities.DisconnectFromDB();
+		System.out.println("try");
+	} catch (SQLException ex) {
+		System.out.println("The following error has occured" + ex.getMessage());
+	}
+
+}
+
+public List<Reimbursement> viewAllReimbursementById(Reimbursement reimbursement) throws IOException {
+	PreparedStatement ps = null;
+	Reimbursement reimb = null;
+	List<Reimbursement> reimbListById = new ArrayList<Reimbursement>();
+
+	try {
+		DBUtilities dbUtilities = new DBUtilities();
+		String sqlStatement = "SELECT * FROM Reimbursements WHERE employeeid=?";
+		ps = dbUtilities.connection.prepareStatement(sqlStatement);
+		ps.setInt(1, reimbursement.getEmployeeid());
+		ResultSet resultSet = ps.executeQuery();
+
+		while (resultSet.next()) {
+
+			reimb = new Reimbursement();
+			reimb.setId(resultSet.getInt("id"));
+			reimb.setStatus(resultSet.getString("status"));
+			reimb.setImage(resultSet.getString("image"));
+			reimb.setAmount(resultSet.getInt("amount"));
+			reimb.setEmployeeid(resultSet.getInt("employeeid"));
+			reimb.setEmployeename(resultSet.getString("employeename"));
+			reimb.setEmail(resultSet.getString("email"));
+			reimb.setPassword(resultSet.getString("password"));
+			reimb.setManagerid(resultSet.getInt("managerid"));
+			reimb.setManagername(resultSet.getString("managername"));
+			reimb.setManageremail(resultSet.getString("manageremail"));
+			
+			reimbListById.add(reimb);
+
+		}
+		dbUtilities.DisconnectFromDB();
+
+	} catch (SQLException ex) {
+		System.out.println("The following error has occured" + ex.getMessage());
+	}
+	return reimbListById;
+	
+	
+}
+	
+
+	
+	
+}

@@ -1,0 +1,27 @@
+package org.revature.ERS.org.revature.ERS;
+
+public class Reimbursement {
+
+	
+	private Integer id;
+	private String status;
+	private String image;
+	private Integer amount;
+	private Integer employeeid;
+	private String employeename;
+	private String email;
+	private String password;
+	private Integer managerid;
+	private String managername;
+	private String manageremail;
+	
+	public Reimbursement(String status, String image, Integer amount, Integer employeeid, String employeename, String email, String password ) {
+		
+	}
+	public Reimbursement() {
+		
+	}
+	public Reimbursement(int employeeid) {
+	}
+	
+}

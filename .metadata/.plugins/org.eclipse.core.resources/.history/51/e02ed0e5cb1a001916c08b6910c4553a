@@ -1,0 +1,83 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+@WebServlet("/ManagerReimbursementServlet")
+
+public class ManagerReimbursementServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+//		PrintWriter output = res.getWriter();	
+//		Service service = new Service();
+//		List<Reimbursement> reimbList = service.getAllReimbursements();
+//		System.out.println(reimbList);
+//		JSONArray jsonArray = new JSONArray();
+//		for(Reimbursement reimbursement : reimbList) {
+//			JSONObject json = new JSONObject();
+//			json.put("employeeid", reimbursement.getEmployeeid());
+//			json.put("employeename", reimbursement.getEmployeename());
+//			json.put("email", reimbursement.getEmail());
+//			json.put("password", reimbursement.getPassword());
+//			json.put("receiptimage", reimbursement.getReceiptimage());
+//			json.put("receiptstatus", reimbursement.getReceiptstatus());
+//			json.put("managerid", reimbursement.getManagerid());
+//			json.put("manageremail", reimbursement.getManageremail());
+//			json.put("managerpassword", reimbursement.getManagerpassword());
+//			
+//			jsonArray.put(json);
+//		}
+//		
+//		output.print(jsonArray);		
+		
+		
+		BufferedReader br = req.getReader();
+		JSONObject json = new JSONObject(br.readLine());
+		
+        ReimbursementDao reimbursementDao = new ReimbursementDao();
+        
+        ArrayList<Reimbursement> reimbursementRequests = reimbursementDao.viewReimbursementAll();
+        
+        PrintWriter out = res.getWriter();
+        ObjectMapper mapper = new ObjectMapper();
+
+
+        
+        String jsonString = mapper.writeValueAsString(reimbursementRequests);
+        out.println(jsonString);
+        out.close();
+		
+		
+		
+		
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
+		PrintWriter output = res.getWriter();
+
+		BufferedReader br = req.getReader();
+		
+		JSONObject json = new JSONObject(br.readLine());
+
+		Employee employee = new Employee(json.getString("position"), json.getString("fullname"), json.getString("email"), json.getString("password"));
+		
+		RegisterService registerService = new RegisterService();
+				
+		registerService.RegisterEmployee(employee); 
+
+	}
+}

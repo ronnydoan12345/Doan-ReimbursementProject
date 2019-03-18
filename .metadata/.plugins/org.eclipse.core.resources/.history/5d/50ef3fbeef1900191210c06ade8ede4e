@@ -1,0 +1,26 @@
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+.row.content {
+	height: 1500px;
+}
+
+.sidenav {
+	height: 1500px;
+}
+
+footer {
+	background-color: #555;
+	color: white;
+}
+
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+	}
+	.row.content {
+		height: auto;
+	}
+}

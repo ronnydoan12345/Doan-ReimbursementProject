@@ -1,0 +1,47 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/RegisterServlet")
+public class RegisterServlet extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		PrintWriter output = res.getWriter();
+		output.write("GET");
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		PrintWriter output = res.getWriter();
+
+		BufferedReader br = req.getReader();
+		
+		System.out.println(br.readLine());
+
+//		String command = "";
+//		String line = "";
+
+//		while ((command = br.readLine()) != null) {
+//			line = command;
+//		}
+
+//		if (line.equals("OFF")) {
+//			if (ConnectionHelper.connection != null) {
+//				connectionHelper.closeConnection();
+//				System.out.println(line);
+//				response.sendRedirect("http://localhost:8080/ExpenseReimbursementSystem/index.html");
+//			}
+//		}
+
+	}
+
+}

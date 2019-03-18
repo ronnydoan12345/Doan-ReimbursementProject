@@ -1,0 +1,124 @@
+package org.revature.ERS.org.revature.ERS;
+
+public class Reimbursement {
+
+	private Integer id;
+	private Integer employeeid;
+	private String employeename;
+
+	private String email;
+	private String password;
+
+	private String receiptimage;
+	private String receiptstatus;
+	private Integer managerid;
+	private String manageremail;
+	private String managerpassword;
+
+	public Reimbursement() {
+
+	}
+	
+	public Reimbursement(Integer employeeid) {
+
+	}
+
+	public Reimbursement(Integer id, Integer employeeid, String employeename, String email, String password,
+			String receiptimage, String receiptstatus, Integer managerid, String manageremail, String managerpassword) {
+		this.id = id;
+		this.employeeid = employeeid;
+		this.employeename = employeename;
+		this.email = email;
+		this.password = password;
+		this.receiptimage = receiptimage;
+		this.receiptstatus = receiptstatus;
+		this.managerid = managerid;
+		this.manageremail = manageremail;
+		this.managerpassword = managerpassword;
+	}
+
+	public Reimbursement(String string, String imagePath, int int1, int int2, String string2, String string3,
+			String string4) {
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getEmployeeid() {
+		return employeeid;
+	}
+
+	public void setEmployeeid(Integer employeeid) {
+		this.employeeid = employeeid;
+	}
+
+	public String getEmployeename() {
+		return employeename;
+	}
+
+	public void setEmployeename(String employeename) {
+		this.employeename = employeename;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getReceiptimage() {
+		return receiptimage;
+	}
+
+	public void setReceiptimage(String receiptimage) {
+		this.receiptimage = receiptimage;
+	}
+
+	public String getReceiptstatus() {
+		return receiptstatus;
+	}
+
+	public void setReceiptstatus(String receiptstatus) {
+		this.receiptstatus = receiptstatus;
+	}
+
+	public Integer getManagerid() {
+		return managerid;
+	}
+
+	public void setManagerid(Integer managerid) {
+		this.managerid = managerid;
+	}
+
+	public String getManageremail() {
+		return manageremail;
+	}
+
+	public void setManageremail(String manageremail) {
+		this.manageremail = manageremail;
+	}
+
+	public String getManagerpassword() {
+		return managerpassword;
+	}
+
+	public void setManagerpassword(String managerpassword) {
+		this.managerpassword = managerpassword;
+	}
+
+}

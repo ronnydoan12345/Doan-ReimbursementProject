@@ -1,0 +1,33 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+@WebServlet("/SingleEmployeeReimbursement")
+public class SingleEmployeeReimbursement extends HttpServlet {
+
+	
+	
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
+		System.out.println("get servlet");
+		PrintWriter output = res.getWriter();
+		BufferedReader br = req.getReader();
+		Service service = new Service();
+		JSONObject json = new JSONObject(br.readLine());
+		System.out.println(json);
+		System.out.println("my id" + json.getInt("id"));
+		Reimbursement reimbursement = new Reimbursement(json.getInt("id"));
+		
+		service.viewAllReimbursementById(reimbursement);
+		
+		
+	}
+}

@@ -1,0 +1,51 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
+
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+		throws ServletException, IOException {
+            PrintWriter output = res.getWriter();
+            output.write("GET");
+            
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) 
+		throws ServletException, IOException {
+		PrintWriter output = res.getWriter();
+        boolean isUser = false;
+		BufferedReader br = req.getReader();
+		RegisterService registerService = new RegisterService();
+		
+		JSONObject json = new JSONObject(br.readLine());
+		Employee employee = new Employee(json.getString("email"), json.getString("password"));
+		try {
+			isUser = registerService.LoginService(employee);
+			if(isUser) {
+				boolean isManager = registerService.isManager(employee);
+				System.out.println(isManager +"logn servlet");
+			}
+		} catch (SQLException ex) {
+			System.out.println("The following error has occured" + ex.getMessage());
+		}
+
+        
+        
+	}
+}

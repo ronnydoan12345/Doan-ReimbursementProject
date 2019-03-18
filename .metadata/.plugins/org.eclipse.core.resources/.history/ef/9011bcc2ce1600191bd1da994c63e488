@@ -1,0 +1,40 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+
+@WebServlet(name="RegisterServlet", urlPatterns="RegisterServlet")
+public class RegisterServlet extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+		throws ServletException, IOException {
+            PrintWriter output = res.getWriter();
+            output.write("GET");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res)
+		throws ServletException, IOException {
+		PrintWriter output = res.getWriter();
+        
+        String fName = req.getParameter("fName");
+        String lName = req.getParameter("lName");
+        String email = req.getParameter("email");
+        String password = req.getParameter("pw");
+        String position = req.getParameter("employeeOrManager");
+        output.write("POST" + fName + lName + email + password + position);
+        
+        
+        
+	}
+	
+}

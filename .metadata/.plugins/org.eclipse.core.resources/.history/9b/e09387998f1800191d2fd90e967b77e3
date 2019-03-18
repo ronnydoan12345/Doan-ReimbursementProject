@@ -1,0 +1,25 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class Service {
+
+public void UpdateService (Employee employee ) throws IOException, SQLException {
+		
+		EmployeeDao employeeDao = new EmployeeDao();
+		
+		employeeDao.updateEmployeePersonalInfoById(employee);		
+		
+
+	}
+public ArrayList<Reimbursement> getAllReimbursements() throws IOException {
+	ArrayList<Reimbursement> reimbList = new ArrayList<Reimbursement>();
+	ReimbursementDao reimbursementDao = new ReimbursementDao();
+	reimbList = reimbursementDao.getAllReimbursements();
+	return reimbList;
+}
+	
+	
+}

@@ -1,0 +1,16 @@
+package org.revature.ERS.org.revature.ERS;
+
+public class RegisterService {
+
+	
+	public void RegisterEmployee (String fullname, String email, String password, String position ) {
+		
+		EmployeeDao employeeDao = new EmployeeDao();
+		
+//		employeeDao.RegisterEmployee(fullname, email, password, position);
+		
+		
+		
+	}
+	
+}

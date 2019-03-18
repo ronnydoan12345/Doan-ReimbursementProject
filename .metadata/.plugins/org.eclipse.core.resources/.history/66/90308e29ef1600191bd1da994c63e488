@@ -1,0 +1,17 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args ) throws SQLException, IOException
+    {
+        EmployeeDao employeeDao = new EmployeeDao();
+        employeeDao.RegisterEmployee("Employee", "Ronny", "Doan", "123");
+    }
+}

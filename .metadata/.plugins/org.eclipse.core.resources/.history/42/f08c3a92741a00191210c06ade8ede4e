@@ -1,0 +1,58 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@WebServlet("/EmployeeReimbursementById")
+public class EmployeeReimbursementById {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		Service service = new Service();		
+		System.out.println("servlet");
+
+
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Reimbursement reimbursement = mapper.readValue(req.getInputStream(), Reimbursement.class);		
+		service.submitReimbursement(reimbursement);
+     
+
+	}
+	
+	
+	
+	
+	ObjectMapper mapper = new ObjectMapper();
+    TicketDao td = new TicketDao();
+    
+    int employeeId = (int)mapper.readValue(request.getInputStream(), Integer.class);
+    ArrayList<Ticket> tickets = td.getAllTicketsFromEmployeeId(employeeId);
+    
+    System.out.println("All tickets are:");
+    for (Ticket t : tickets) {
+        System.out.println(t.toString());
+    }
+    System.out.println();
+   
+    //put in jsonstring and printWriter out
+    PrintWriter out = response.getWriter();
+    
+    String jsonString = mapper.writeValueAsString(tickets);
+    System.out.println("sending this:");
+    System.out.println("jsonString");
+    System.out.println();
+    out.println(jsonString);
+    out.close();
+}

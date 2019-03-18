@@ -1,0 +1,18 @@
+package org.revature.ERS.org.revature.ERS;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+public class Service {
+
+public void UpdateService (Employee employee ) throws IOException, SQLException {
+		
+		EmployeeDao employeeDao = new EmployeeDao();
+		
+		employeeDao.updateEmployeePersonalInfoById(employee);		
+		
+
+	}
+	
+	
+}
