@@ -1,7 +1,0 @@
-package org.revature.ERS.org.revature.ERS;
-
-import javax.servlet.http.HttpServlet;
-
-public class ViewReimbursementById extends HttpServlet {
-
-}
